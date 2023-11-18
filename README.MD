@@ -18,3 +18,18 @@ To run the application on iPhone device/simulator:
  - Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
  - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
 
+
+  NavView<MainScreens>(
+        initial = PageIdentifier(MainScreens.LoginScreen),
+        controllerItem = MainController
+    ) { screen ->
+
+        when (screen) {
+            MainScreens.LoginScreen -> LoginScreen()
+            MainScreens.BottomNavigationScreen -> BottomNavigationView()
+            is MainScreens.DetailScreen -> DetailScreen(screen.text)
+            is MainScreens.ProfileScreen -> ProfileScreen()
+        }
+
+
+    }
